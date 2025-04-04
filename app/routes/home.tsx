@@ -1,4 +1,6 @@
 import type { Route } from './+types/home'
+import { Button } from '~/components/ui/button'
+import { Avatar, AvatarImage, AvatarFallback } from '~/components/ui/avatar'
 import {
   Card,
   CardContent,
@@ -17,9 +19,9 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className='max-w-md w-full m-auto bg-[#d8eefe]'>
+    <main className='relative max-w-md w-full min-h-dvh h-full m-auto bg-[#d8eefe]'>
       {/* Heading */}
-      <div className='flex justify-between p-4'>
+      <div className='fixed top-0 flex justify-between max-w-md w-full h-24 p-4 bg-[#d8eefe]'>
         <div>
           <div>Good Morning,</div>
           <div className='font-bold text-2xl'>Estevan</div>
@@ -30,7 +32,7 @@ export default function Home() {
         </div>
       </div>
       {/* Cards */}
-      <div className='space-y-3 m-4'>
+      <div className='space-y-3 px-4 py-24'>
         <Card>
           <CardHeader>
             <CardTitle className='flex justify-between'>
@@ -71,6 +73,27 @@ export default function Home() {
           <CardContent>Reading</CardContent>
           <CardFooter>Read 20 pages</CardFooter>
         </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className='flex justify-between'>
+              Icon
+              <div>Icon</div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>Reading</CardContent>
+          <CardFooter>Read 20 pages</CardFooter>
+        </Card>
+      </div>
+      {/* Footer Nav */}
+      <div className='fixed bottom-0 flex justify-center gap-4 max-w-md w-full p-4 bg-gray-50'>
+        <Button className='text-xl'>⌂</Button>
+        <Button className='text-xl'>+</Button>
+        <Button className='p-2' variant='ghost'>
+          <Avatar>
+            <AvatarImage src='https://github.com/shadcn.png' />
+            <AvatarFallback>ER</AvatarFallback>
+          </Avatar>
+        </Button>
       </div>
     </main>
   )
