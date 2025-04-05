@@ -9,6 +9,16 @@ import {
   CardTitle,
   CardFooter,
 } from '~/components/ui/card'
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '~/components/ui/drawer'
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -20,9 +30,9 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <main className='grid place-items-center bg-gray-300 min-h-dvh min-w-dvw'>
-      <div className='flex flex-col max-w-[440px] w-full min-h-[956px] max-h-[956px] h-full bg-[#d8eefe]'>
+      <div className='relative w-full h-full bg-[#d8eefe]'>
         {/* Heading */}
-        <div className='flex shrink-0 justify-between max-w-[inherit] w-full h-24 p-4'>
+        <div className='fixed z-10 top-0 flex justify-between max-w-[inherit] w-full h-24 p-4 bg-red-600/10'>
           <div>
             <div>Good Morning,</div>
             <div className='font-bold text-2xl'>Estevan</div>
@@ -33,7 +43,35 @@ export default function Home() {
           </div>
         </div>
         {/* Cards */}
-        <div className='overflow-y-auto p-4 space-y-3'>
+        <div className='overflow-y-auto p-4 mt-24 mb-16 space-y-3'>
+          <Drawer>
+            <DrawerTrigger asChild>
+              <Card className='gap-0'>
+                <CardHeader className='mb-6'>
+                  <CardTitle className='flex justify-between'>
+                    📕
+                    <div>⭕️</div>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className='font-bold'>Reading</CardContent>
+                <CardFooter className='font-light'>Read 20 pages</CardFooter>
+              </Card>
+            </DrawerTrigger>
+            <DrawerContent className='h-full pb-24'>
+              <DrawerHeader>
+                <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                <DrawerDescription>
+                  This action cannot be undone.
+                </DrawerDescription>
+              </DrawerHeader>
+              <DrawerFooter>
+                <Button>Submit</Button>
+                <DrawerClose>
+                  <Button variant='outline'>Cancel</Button>
+                </DrawerClose>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
           <Card>
             <CardHeader>
               <CardTitle className='flex justify-between'>
@@ -86,7 +124,7 @@ export default function Home() {
           </Card>
         </div>
         {/* Footer Nav */}
-        <div className='flex shrink-0 justify-center gap-4 max-w-[inherit] w-full p-4'>
+        <div className='fixed z-60 bottom-0 flex justify-center gap-4 max-w-[inherit] w-full p-4 bg-red-600/10'>
           <Button className='text-xl'>⌂</Button>
           <Button className='text-xl'>+</Button>
           <Button className='p-2' variant='ghost'>
