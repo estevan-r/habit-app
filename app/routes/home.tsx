@@ -32,7 +32,7 @@ export default function Home() {
     <main className='grid place-items-center bg-gray-300 min-h-dvh min-w-dvw'>
       <div className='relative w-full h-full bg-[#d8eefe]'>
         {/* Heading */}
-        <div className='fixed z-10 top-0 flex justify-between max-w-[inherit] w-full h-24 p-4 bg-red-600/10'>
+        <div className='fixed z-10 top-0 flex justify-between max-w-[inherit] w-full h-24 p-4 bg-[#d8eefe] border-b border-b-black/5 shadow-xs'>
           <div>
             <div>Good Morning,</div>
             <div className='font-bold text-2xl'>Estevan</div>
@@ -43,18 +43,18 @@ export default function Home() {
           </div>
         </div>
         {/* Cards */}
-        <div className='overflow-y-auto p-4 mt-24 mb-16 space-y-3'>
+        <div className='overflow-y-auto p-4 mt-24 mb-20 space-y-3'>
           <Drawer>
             <DrawerTrigger asChild>
-              <Card className='gap-0'>
-                <CardHeader className='mb-6'>
-                  <CardTitle className='flex justify-between'>
-                    📕
+              <Card>
+                <CardHeader>
+                  <div className='flex justify-between items-center'>
+                    <CardTitle>Reading</CardTitle>
                     <div>⭕️</div>
-                  </CardTitle>
+                  </div>
+                  <CardDescription>Read 20 pages</CardDescription>
                 </CardHeader>
-                <CardContent className='font-bold'>Reading</CardContent>
-                <CardFooter className='font-light'>Read 20 pages</CardFooter>
+                <CardContent>4 day steak 📈</CardContent>
               </Card>
             </DrawerTrigger>
             <DrawerContent className='h-full pb-24'>
@@ -124,15 +124,23 @@ export default function Home() {
           </Card>
         </div>
         {/* Footer Nav */}
-        <div className='fixed z-60 bottom-0 flex justify-center gap-4 max-w-[inherit] w-full p-4 bg-red-600/10'>
-          <Button className='text-xl'>⌂</Button>
-          <Button className='text-xl'>+</Button>
-          <Button className='p-2' variant='ghost'>
+        <div className='fixed z-60 bottom-0 flex justify-center max-w-[inherit] w-full p-4'>
+          <div className='flex justify-center items-center gap-6 bg-white p-3 rounded-full outline-1 outline-black/5 shadow-xl'>
+            <Button
+              variant='outline'
+              size='icon'
+              className='size-8 shrink-0 rounded-full'
+            >
+              ⌂
+            </Button>
+            <Button size='icon' className='size-8 shrink-0 rounded-full'>
+              +
+            </Button>
             <Avatar>
               <AvatarImage src='https://github.com/shadcn.png' />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
-          </Button>
+          </div>
         </div>
       </div>
     </main>
