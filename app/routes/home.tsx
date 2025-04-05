@@ -19,81 +19,83 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className='relative max-w-md w-full min-h-dvh h-full m-auto bg-[#d8eefe]'>
-      {/* Heading */}
-      <div className='fixed top-0 flex justify-between max-w-md w-full h-24 p-4 bg-[#d8eefe]'>
-        <div>
-          <div>Good Morning,</div>
-          <div className='font-bold text-2xl'>Estevan</div>
+    <main className='grid place-items-center bg-gray-300 min-h-dvh min-w-dvw'>
+      <div className='relative max-w-[440px] w-full min-h-[956px] max-h-[956px] h-full bg-[#d8eefe]'>
+        {/* Heading */}
+        <div className='fixed z-10 flex justify-between max-w-[inherit] w-full h-24 p-4 bg-[#d8eefe]'>
+          <div>
+            <div>Good Morning,</div>
+            <div className='font-bold text-2xl'>Estevan</div>
+          </div>
+          <div className='flex gap-2'>
+            <div>icon</div>
+            <div>icon</div>
+          </div>
         </div>
-        <div className='flex gap-2'>
-          <div>icon</div>
-          <div>icon</div>
+        {/* Cards */}
+        <div className='overflow-y-auto flex flex-col gap-3 px-4 py-24 h-full'>
+          <Card>
+            <CardHeader>
+              <CardTitle className='flex justify-between'>
+                Icon
+                <div>Icon</div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>Reading</CardContent>
+            <CardFooter>Read 20 pages</CardFooter>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className='flex justify-between'>
+                Icon
+                <div>Icon</div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>Reading</CardContent>
+            <CardFooter>Read 20 pages</CardFooter>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className='flex justify-between'>
+                Icon
+                <div>Icon</div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>Reading</CardContent>
+            <CardFooter>Read 20 pages</CardFooter>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className='flex justify-between'>
+                Icon
+                <div>Icon</div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>Reading</CardContent>
+            <CardFooter>Read 20 pages</CardFooter>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className='flex justify-between'>
+                Icon
+                <div>Icon</div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>Reading</CardContent>
+            <CardFooter>Read 20 pages</CardFooter>
+          </Card>
         </div>
-      </div>
-      {/* Cards */}
-      <div className='space-y-3 px-4 py-24'>
-        <Card>
-          <CardHeader>
-            <CardTitle className='flex justify-between'>
-              Icon
-              <div>Icon</div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>Reading</CardContent>
-          <CardFooter>Read 20 pages</CardFooter>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className='flex justify-between'>
-              Icon
-              <div>Icon</div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>Reading</CardContent>
-          <CardFooter>Read 20 pages</CardFooter>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className='flex justify-between'>
-              Icon
-              <div>Icon</div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>Reading</CardContent>
-          <CardFooter>Read 20 pages</CardFooter>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className='flex justify-between'>
-              Icon
-              <div>Icon</div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>Reading</CardContent>
-          <CardFooter>Read 20 pages</CardFooter>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className='flex justify-between'>
-              Icon
-              <div>Icon</div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>Reading</CardContent>
-          <CardFooter>Read 20 pages</CardFooter>
-        </Card>
-      </div>
-      {/* Footer Nav */}
-      <div className='fixed bottom-0 flex justify-center gap-4 max-w-md w-full p-4 bg-gray-50'>
-        <Button className='text-xl'>⌂</Button>
-        <Button className='text-xl'>+</Button>
-        <Button className='p-2' variant='ghost'>
-          <Avatar>
-            <AvatarImage src='https://github.com/shadcn.png' />
-            <AvatarFallback>ER</AvatarFallback>
-          </Avatar>
-        </Button>
+        {/* Footer Nav */}
+        <div className='sticky z-20 flex justify-center gap-4 max-w-[inherit] w-full p-4 bg-gray-50/20'>
+          <Button className='text-xl'>⌂</Button>
+          <Button className='text-xl'>+</Button>
+          <Button className='p-2' variant='ghost'>
+            <Avatar>
+              <AvatarImage src='https://github.com/shadcn.png' />
+              <AvatarFallback>ER</AvatarFallback>
+            </Avatar>
+          </Button>
+        </div>
       </div>
     </main>
   )
