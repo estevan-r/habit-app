@@ -20,9 +20,9 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <main className='grid place-items-center bg-gray-300 min-h-dvh min-w-dvw'>
-      <div className='relative max-w-[440px] w-full min-h-[956px] max-h-[956px] h-full bg-[#d8eefe]'>
+      <div className='flex flex-col max-w-[440px] w-full min-h-[956px] max-h-[956px] h-full bg-[#d8eefe]'>
         {/* Heading */}
-        <div className='fixed z-10 flex justify-between max-w-[inherit] w-full h-24 p-4 bg-[#d8eefe]'>
+        <div className='flex shrink-0 justify-between max-w-[inherit] w-full h-24 p-4'>
           <div>
             <div>Good Morning,</div>
             <div className='font-bold text-2xl'>Estevan</div>
@@ -33,7 +33,7 @@ export default function Home() {
           </div>
         </div>
         {/* Cards */}
-        <div className='overflow-y-auto flex flex-col gap-3 px-4 py-24 h-full'>
+        <div className='overflow-y-auto p-4 space-y-3'>
           <Card>
             <CardHeader>
               <CardTitle className='flex justify-between'>
@@ -86,7 +86,7 @@ export default function Home() {
           </Card>
         </div>
         {/* Footer Nav */}
-        <div className='sticky z-20 flex justify-center gap-4 max-w-[inherit] w-full p-4 bg-gray-50/20'>
+        <div className='flex shrink-0 justify-center gap-4 max-w-[inherit] w-full p-4'>
           <Button className='text-xl'>⌂</Button>
           <Button className='text-xl'>+</Button>
           <Button className='p-2' variant='ghost'>
