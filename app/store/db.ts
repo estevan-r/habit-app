@@ -3,7 +3,7 @@ type Habit = {
   name: string
   description: string
   interval: string
-  streak?: number
+  streak: number
 }
 
 const HABITS: Habit[] = [
@@ -34,7 +34,7 @@ export function getHabits() {
   return HABITS
 }
 
-export function createHabit({ name, description, interval }: Habit) {
+export function addHabit({ name, description, interval }: Habit) {
   HABITS.push({
     id: HABITS.length + 1,
     name,
@@ -42,4 +42,14 @@ export function createHabit({ name, description, interval }: Habit) {
     interval,
     streak: 0,
   })
+}
+
+export function getHabit(id: number) {
+  return HABITS.find((habit) => habit.id === id)
+}
+
+export function updateStreak(id: number) {
+  let habit = HABITS.find((habit) => habit.id === id)
+
+  return habit ? habit.streak + 1 : null
 }
