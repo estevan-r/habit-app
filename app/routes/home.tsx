@@ -1,6 +1,5 @@
 import type { Route } from './+types/home'
 import { Button } from '~/components/ui/button'
-import { Avatar, AvatarImage, AvatarFallback } from '~/components/ui/avatar'
 import {
   Card,
   CardContent,
@@ -29,120 +28,88 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className='grid place-items-center w-full h-full'>
-      <div className='relative w-full h-full bg-sky-50'>
-        {/* Heading */}
-        <div className='fixed z-10 top-0 flex justify-between max-w-[inherit] w-full h-24 p-4 bg-inherit border-b border-b-black/5 shadow-xs'>
-          <div>
-            <div>Good Morning,</div>
-            <div className='font-bold text-2xl'>Estevan</div>
-          </div>
-          <div className='flex gap-2'>
-            <div>icon</div>
-            <div>icon</div>
-          </div>
-        </div>
-        {/* Cards */}
-        <div className='overflow-y-auto p-4 mt-24 mb-20 space-y-3'>
-          <Drawer>
-            <DrawerTrigger asChild>
-              <Card>
-                <CardHeader>
-                  <div className='flex justify-between items-center'>
-                    <CardTitle>Reading</CardTitle>
-                    <div>⭕️</div>
-                  </div>
-                  <CardDescription>Read 20 pages</CardDescription>
-                </CardHeader>
-                <CardContent>4 day steak 📈</CardContent>
-              </Card>
-            </DrawerTrigger>
-            <DrawerContent className='h-full pb-24'>
-              <DrawerHeader>
-                <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-                <DrawerDescription>
-                  This action cannot be undone.
-                </DrawerDescription>
-              </DrawerHeader>
-              <DrawerFooter>
-                <Button>Submit</Button>
-                <DrawerClose asChild>
-                  <Button variant='outline'>Cancel</Button>
-                </DrawerClose>
-              </DrawerFooter>
-            </DrawerContent>
-          </Drawer>
-          <Card>
-            <CardHeader>
-              <CardTitle className='flex justify-between'>
-                Icon
-                <div>Icon</div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>Reading</CardContent>
-            <CardFooter>Read 20 pages</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className='flex justify-between'>
-                Icon
-                <div>Icon</div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>Reading</CardContent>
-            <CardFooter>Read 20 pages</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className='flex justify-between'>
-                Icon
-                <div>Icon</div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>Reading</CardContent>
-            <CardFooter>Read 20 pages</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className='flex justify-between'>
-                Icon
-                <div>Icon</div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>Reading</CardContent>
-            <CardFooter>Read 20 pages</CardFooter>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className='flex justify-between'>
-                Icon
-                <div>Icon</div>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>Reading</CardContent>
-            <CardFooter>Read 20 pages</CardFooter>
-          </Card>
-        </div>
-        {/* Footer Nav */}
-        <div className='fixed z-60 bottom-0 flex justify-center max-w-[inherit] w-full p-4'>
-          <div className='flex justify-center items-center gap-6 bg-white p-3 rounded-full outline-1 outline-black/5 shadow-xl'>
-            <Button
-              variant='outline'
-              size='icon'
-              className='size-8 shrink-0 rounded-full'
-            >
-              ⌂
-            </Button>
-            <Button size='icon' className='size-8 shrink-0 rounded-full'>
-              +
-            </Button>
-            <Avatar>
-              <AvatarImage src='https://github.com/shadcn.png' />
-              <AvatarFallback>ER</AvatarFallback>
-            </Avatar>
-          </div>
-        </div>
+    <>
+      {/* Cards */}
+      <div className='overflow-y-auto p-4 mt-24 mb-20 space-y-3'>
+        <Drawer>
+          <DrawerTrigger asChild>
+            <Card>
+              <CardHeader>
+                <div className='flex justify-between items-center'>
+                  <CardTitle>Reading</CardTitle>
+                  <div>⭕️</div>
+                </div>
+                <CardDescription>Read 20 pages</CardDescription>
+              </CardHeader>
+              <CardContent>4 day steak 📈</CardContent>
+            </Card>
+          </DrawerTrigger>
+          <DrawerContent className='h-full pb-24'>
+            <DrawerHeader>
+              <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+              <DrawerDescription>
+                This action cannot be undone.
+              </DrawerDescription>
+            </DrawerHeader>
+            <DrawerFooter>
+              <Button>Submit</Button>
+              <DrawerClose asChild>
+                <Button variant='outline'>Cancel</Button>
+              </DrawerClose>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
+        <Card>
+          <CardHeader>
+            <CardTitle className='flex justify-between'>
+              Icon
+              <div>Icon</div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>Reading</CardContent>
+          <CardFooter>Read 20 pages</CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className='flex justify-between'>
+              Icon
+              <div>Icon</div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>Reading</CardContent>
+          <CardFooter>Read 20 pages</CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className='flex justify-between'>
+              Icon
+              <div>Icon</div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>Reading</CardContent>
+          <CardFooter>Read 20 pages</CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className='flex justify-between'>
+              Icon
+              <div>Icon</div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>Reading</CardContent>
+          <CardFooter>Read 20 pages</CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className='flex justify-between'>
+              Icon
+              <div>Icon</div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>Reading</CardContent>
+          <CardFooter>Read 20 pages</CardFooter>
+        </Card>
       </div>
-    </main>
+    </>
   )
 }
