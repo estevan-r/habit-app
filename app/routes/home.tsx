@@ -29,7 +29,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className='grid place-items-center bg-gray-300 min-h-dvh min-w-dvw'>
+    <main className='grid place-items-center bg-gray-300 w-full h-full'>
       <div className='relative w-full h-full bg-[#d8eefe]'>
         {/* Heading */}
         <div className='fixed z-10 top-0 flex justify-between max-w-[inherit] w-full h-24 p-4 bg-[#d8eefe] border-b border-b-black/5 shadow-xs'>
