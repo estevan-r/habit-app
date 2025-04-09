@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router'
 import NewHabit from '~/routes/new-habit'
-import FormDrawer from '~/components/form-drawer'
 import { Button } from '~/components/ui/button'
 import { Avatar, AvatarImage, AvatarFallback } from '~/components/ui/avatar'
 
@@ -17,11 +16,8 @@ export default function FooterNav() {
             ⌂
           </Button>
         </NavLink>
-        <NavLink to='new-habit'>
-          <Button size='icon' className='size-8 shrink-0 rounded-full'>
-            +
-          </Button>
-        </NavLink>
+        {/* //TODO: Link route to dailog */}
+        <NewHabit />
         <NavLink to='profile'>
           <Avatar>
             <AvatarImage src='https://github.com/shadcn.png' />
