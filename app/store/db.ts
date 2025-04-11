@@ -23,9 +23,30 @@ const HABITS: Habit[] = [
   },
   {
     id: 3,
+    name: 'Pushups',
+    description: '20 pushups',
+    interval: 'alternating',
+    streak: 1,
+  },
+  {
+    id: 4,
     name: 'Run',
     description: 'Run 5 miles',
     interval: 'alternating',
+    streak: 1,
+  },
+  {
+    id: 5,
+    name: 'Floss',
+    description: 'Floss teeth nightly',
+    interval: 'daily',
+    streak: 1,
+  },
+  {
+    id: 6,
+    name: 'Journal',
+    description: 'Write down daily thoughts',
+    interval: 'daily',
     streak: 1,
   },
 ]

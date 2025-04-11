@@ -13,7 +13,7 @@ import {
 
 export default function NewHabit() {
   return (
-    <Form className='mt-6 space-y-6'>
+    <Form className='mt-24 p-4 space-y-6'>
       <div className='space-y-2'>
         <Label htmlFor='name'>Name</Label>
         <Input id='name' type='text' placeholder='Name' />

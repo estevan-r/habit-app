@@ -5,7 +5,7 @@ import { Avatar, AvatarImage, AvatarFallback } from '~/components/ui/avatar'
 export default function FooterNav() {
   return (
     <div className='fixed z-20 bottom-0 flex justify-center p-4 w-full'>
-      <div className='flex justify-center items-center gap-6 bg-white p-3 rounded-full outline-1 outline-black/5 shadow-xl'>
+      <div className='flex justify-center items-center gap-6 bg-stone-50/30 p-3 rounded-full outline-2 outline-stone-950/5 backdrop-blur-sm shadow-xl'>
         <NavLink to='/'>
           <Button
             variant='outline'
