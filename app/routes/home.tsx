@@ -8,16 +8,6 @@ import {
   CardTitle,
   CardFooter,
 } from '~/components/ui/card'
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from '~/components/ui/drawer'
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -31,34 +21,16 @@ export default function Home() {
     <>
       {/* Cards */}
       <div className='overflow-y-auto p-4 mt-24 mb-20 space-y-3'>
-        <Drawer>
-          <DrawerTrigger asChild>
-            <Card>
-              <CardHeader>
-                <div className='flex justify-between items-center'>
-                  <CardTitle>Reading</CardTitle>
-                  <div>⭕️</div>
-                </div>
-                <CardDescription>Read 20 pages</CardDescription>
-              </CardHeader>
-              <CardContent>4 day steak 📈</CardContent>
-            </Card>
-          </DrawerTrigger>
-          <DrawerContent className='h-full pb-24'>
-            <DrawerHeader>
-              <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-              <DrawerDescription>
-                This action cannot be undone.
-              </DrawerDescription>
-            </DrawerHeader>
-            <DrawerFooter>
-              <Button>Submit</Button>
-              <DrawerClose asChild>
-                <Button variant='outline'>Cancel</Button>
-              </DrawerClose>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
+        <Card className='bg-stone-900 text-stone-300 border-none outline-2 outline-stone-950/10'>
+          <CardHeader>
+            <div className='flex justify-between items-center'>
+              <CardTitle>Reading</CardTitle>
+              <div>⭕️</div>
+            </div>
+            <CardDescription>Read 20 pages</CardDescription>
+          </CardHeader>
+          <CardContent>4 day steak 📈</CardContent>
+        </Card>
         <Card>
           <CardHeader>
             <CardTitle className='flex justify-between'>
