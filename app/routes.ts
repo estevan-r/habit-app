@@ -10,6 +10,6 @@ export default [
     index('routes/home.tsx'),
     route('profile', 'routes/profile.tsx'),
     route('new-habit', 'routes/new-habit.tsx'),
-    route('home/:id', 'routes/habit-details.tsx'),
+    route('habit/:id', 'routes/habit-details.tsx'),
   ]),
 ] satisfies RouteConfig

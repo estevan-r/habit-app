@@ -1,5 +1,5 @@
 type Habit = {
-  id: number
+  id: string
   name: string
   description: string
   interval: string
@@ -8,42 +8,42 @@ type Habit = {
 
 const HABITS: Habit[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Reading',
     description: 'Read 2 chapters',
     interval: 'daily',
     streak: 1,
   },
   {
-    id: 2,
+    id: '2',
     name: 'Hydrate',
     description: 'Drink 48 oz of water',
     interval: 'daily',
     streak: 1,
   },
   {
-    id: 3,
+    id: '3',
     name: 'Pushups',
     description: '20 pushups',
     interval: 'alternating',
     streak: 1,
   },
   {
-    id: 4,
+    id: '4',
     name: 'Run',
     description: 'Run 5 miles',
     interval: 'alternating',
     streak: 1,
   },
   {
-    id: 5,
+    id: '5',
     name: 'Floss',
     description: 'Floss teeth nightly',
     interval: 'daily',
     streak: 1,
   },
   {
-    id: 6,
+    id: '6',
     name: 'Journal',
     description: 'Write down daily thoughts',
     interval: 'daily',
@@ -65,7 +65,7 @@ export function addHabit({
   interval: string
 }) {
   HABITS.push({
-    id: HABITS.length + 1,
+    id: `${HABITS.length + 1}`,
     name,
     description,
     interval,
@@ -73,7 +73,7 @@ export function addHabit({
   })
 }
 
-export function getHabit(id: number) {
+export function getHabit(id: string) {
   const habit = HABITS.find((habit) => habit.id === id)
 
   if (!habit) {
@@ -82,7 +82,7 @@ export function getHabit(id: number) {
   return habit
 }
 
-export function updateStreak(id: number) {
+export function updateStreak(id: string) {
   let habit = HABITS.find((habit) => habit.id === id)
 
   if (!habit) {

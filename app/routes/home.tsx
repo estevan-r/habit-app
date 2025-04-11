@@ -1,4 +1,5 @@
 import type { Route } from './+types/home'
+import { Link } from 'react-router'
 import { getHabits } from '~/store/db'
 import {
   Card,
@@ -34,6 +35,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           </CardHeader>
           <div className='absolute top-6 right-6'>⭕️</div>
           <CardContent>{habit.streak} day streak 📈</CardContent>
+          <Link
+            to={`/habit/${habit.id}`}
+            className='absolute top-0 left-0 w-full h-full'
+          />
         </Card>
       ))}
     </div>
