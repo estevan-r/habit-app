@@ -1,6 +1,7 @@
 import type { Route } from './+types/home'
-import { Link } from 'react-router'
+import { Link, Outlet } from 'react-router'
 import { getHabits } from '~/store/db'
+import FormModal from '~/components/form-modal'
 import {
   Card,
   CardContent,
@@ -24,6 +25,9 @@ export function meta({}: Route.MetaArgs) {
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
     <div className='overflow-y-auto p-4 mt-24 mb-20 space-y-3'>
+      <FormModal>
+        <Outlet />
+      </FormModal>
       {loaderData.map((habit) => (
         <Card
           key={habit.id}
