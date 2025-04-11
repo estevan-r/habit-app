@@ -1,5 +1,6 @@
 import type { Route } from './+types/new-habit'
-import { Form } from 'react-router'
+import { addHabit } from '~/store/db'
+import { Form, redirect } from 'react-router'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
@@ -11,16 +12,33 @@ import {
   SelectValue,
 } from '~/components/ui/select'
 
+export async function action({ request }: Route.ActionArgs) {
+  const formData = await request.formData()
+
+  const name = formData.get('name') as string
+  const description = formData.get('description') as string
+  const interval = formData.get('interval') as string
+
+  addHabit({ name, description, interval })
+
+  return redirect('/')
+}
+
 export default function NewHabit() {
   return (
-    <Form className='mt-24 p-4 space-y-6'>
+    <Form method='post' className='mt-24 p-4 space-y-6'>
       <div className='space-y-2'>
         <Label htmlFor='name'>Name</Label>
-        <Input id='name' type='text' placeholder='Name' />
+        <Input type='text' id='name' name='name' placeholder='Name' />
       </div>
       <div className='space-y-2'>
         <Label htmlFor='description'>Description</Label>
-        <Input id='description' type='text' placeholder='Description' />
+        <Input
+          type='text'
+          id='description'
+          name='description'
+          placeholder='Description'
+        />
       </div>
       <div className='space-y-2'>
         <Label htmlFor='interval'>Interval</Label>

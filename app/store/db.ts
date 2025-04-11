@@ -55,7 +55,15 @@ export function getHabits() {
   return HABITS
 }
 
-export function addHabit({ name, description, interval }: Habit) {
+export function addHabit({
+  name,
+  description,
+  interval,
+}: {
+  name: string
+  description: string
+  interval: string
+}) {
   HABITS.push({
     id: HABITS.length + 1,
     name,
