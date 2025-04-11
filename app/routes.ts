@@ -11,5 +11,9 @@ export default [
     route('profile', 'routes/profile.tsx'),
     route('new-habit', 'routes/new-habit.tsx'),
     route('habit/:id', 'routes/habit-details.tsx'),
+    // TODO: Fix to incorporate new modal
+    route('habits', 'routes/habits.tsx', [
+      route('create', 'routes/create.tsx'),
+    ]),
   ]),
 ] satisfies RouteConfig
