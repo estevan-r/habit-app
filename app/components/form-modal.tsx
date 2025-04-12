@@ -9,22 +9,21 @@ import {
   DrawerTrigger,
 } from '~/components/ui/drawer'
 import { Button } from '~/components/ui/button'
-import { useNavigate, useLocation, useParams } from 'react-router'
+import { useNavigate, useLocation, useMatch, matchPath } from 'react-router'
 
 export default function FormModal({ children }: React.ComponentProps<'div'>) {
-  const { habitId } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
+  const match = matchPath('/:id', location.pathname)
   const closeModal = () => navigate(-1)
 
-  // TODO: Figure out how to dynamically set hait id - useParams not working
   // TODO: Create conditional for each path to render in modal
   return (
     <Drawer
       open={
         location.pathname === '/create' ||
         location.pathname === '/profile' ||
-        location.pathname === `/habit/${habitId}`
+        location.pathname === `/${match?.params.id}`
       }
       onOpenChange={(open) => {
         if (!open) closeModal()

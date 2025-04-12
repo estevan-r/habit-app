@@ -10,7 +10,7 @@ export default [
     route('/', 'routes/home.tsx', [
       route('create', 'routes/create.tsx'),
       route('new-habit', 'routes/new-habit.tsx'),
-      route('habit/:id', 'routes/habit-details.tsx'),
+      route(':id', 'routes/habit-details.tsx'),
       route('profile', 'routes/profile.tsx'),
     ]),
   ]),
