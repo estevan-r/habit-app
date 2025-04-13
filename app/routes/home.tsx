@@ -12,7 +12,11 @@ import {
 } from '~/components/ui/card'
 
 export function loader() {
-  return getHabits()
+  const data = getHabits()
+  data.sort((a, b) => {
+    return (b.id as any) - (a.id as any)
+  })
+  return data
 }
 
 export function meta({}: Route.MetaArgs) {
