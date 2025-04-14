@@ -28,7 +28,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   return (
-    <div className='overflow-y-auto p-4 mt-24 mb-20 space-y-3'>
+    <div className='overflow-y-auto h-full p-4 pb-[calc(var(--spacing)*22)] space-y-3'>
       <FormModal>
         <Outlet />
       </FormModal>

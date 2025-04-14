@@ -5,7 +5,7 @@ import FooterNav from '~/components/footer-nav'
 export default function Layout() {
   return (
     <main className='grid place-items-center w-full h-full'>
-      <div className='relative w-full h-full bg-stone-50'>
+      <div className='relative flex flex-col justify-between max-h-dvh w-full bg-stone-100'>
         <Header />
         <Outlet />
         <FooterNav />
