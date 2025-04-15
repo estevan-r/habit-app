@@ -1,3 +1,5 @@
+import { isYesterday, isToday, parseISO } from 'date-fns'
+
 type Habit = {
   id: string
   name: string
@@ -92,11 +94,25 @@ export function getHabit(id: string) {
   return habit
 }
 
-export function updateStreak(id: string) {
-  let habit = HABITS.find((habit) => habit.id === id)
+export function updateStreak(habit: Habit): Habit {
+  const today = new Date()
+  const lastDate = parseISO(habit.lastCompletedDate)
 
-  if (!habit) {
-    throw new Error('Habit not found')
+  if (isToday(lastDate)) {
+    return habit
   }
-  return habit.currentStreak + 1
+
+  if (isYesterday(lastDate)) {
+    return {
+      ...habit,
+      currentStreak: habit.currentStreak + 1,
+      lastCompletedDate: today.toISOString(),
+    }
+  }
+
+  return {
+    ...habit,
+    currentStreak: 1,
+    lastCompletedDate: today.toISOString(),
+  }
 }
