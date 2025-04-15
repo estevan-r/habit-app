@@ -28,7 +28,7 @@ export default function HabitDetails({ loaderData }: Route.ComponentProps) {
     return <p>Habit not found 😔</p>
   }
 
-  const { id, name, description, interval, streak } = loaderData
+  const { id, name, description, interval, currentStreak } = loaderData
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -39,7 +39,7 @@ export default function HabitDetails({ loaderData }: Route.ComponentProps) {
       <h1>{name}</h1>
       <p>{description}</p>
       <p>Interval: {interval}</p>
-      <p>Current Streak: {streak}</p>
+      <p>Current Streak: {currentStreak}</p>
     </div>
   )
 }

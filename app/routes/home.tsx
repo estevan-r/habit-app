@@ -42,7 +42,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             <CardDescription>{habit.description}</CardDescription>
           </CardHeader>
           <div className='absolute top-6 right-6'>⭕️</div>
-          <CardContent>{habit.streak} day streak 📈</CardContent>
+          <CardContent>{habit.currentStreak} day streak 📈</CardContent>
           <Link
             to={`/${habit.id}`}
             className='absolute top-0 left-0 w-full h-full'

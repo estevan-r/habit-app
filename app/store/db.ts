@@ -3,7 +3,8 @@ type Habit = {
   name: string
   description: string
   interval: string
-  streak: number
+  currentStreak: number
+  lastCompletedDate: string
 }
 
 const HABITS: Habit[] = [
@@ -12,42 +13,48 @@ const HABITS: Habit[] = [
     name: 'Reading',
     description: 'Read 2 chapters',
     interval: 'daily',
-    streak: 1,
+    currentStreak: 1,
+    lastCompletedDate: '',
   },
   {
     id: '2',
     name: 'Hydrate',
     description: 'Drink 48 oz of water',
     interval: 'daily',
-    streak: 1,
+    currentStreak: 1,
+    lastCompletedDate: '',
   },
   {
     id: '3',
     name: 'Pushups',
     description: '20 pushups',
     interval: 'alternating',
-    streak: 1,
+    currentStreak: 1,
+    lastCompletedDate: '',
   },
   {
     id: '4',
     name: 'Run',
     description: 'Run 5 miles',
     interval: 'alternating',
-    streak: 1,
+    currentStreak: 1,
+    lastCompletedDate: '',
   },
   {
     id: '5',
     name: 'Floss',
     description: 'Floss teeth nightly',
     interval: 'daily',
-    streak: 1,
+    currentStreak: 1,
+    lastCompletedDate: '',
   },
   {
     id: '6',
     name: 'Journal',
     description: 'Write down daily thoughts',
     interval: 'daily',
-    streak: 1,
+    currentStreak: 1,
+    lastCompletedDate: '',
   },
 ]
 
@@ -59,17 +66,20 @@ export function addHabit({
   name,
   description,
   interval,
+  lastCompletedDate,
 }: {
   name: string
   description: string
   interval: string
+  lastCompletedDate: string
 }) {
   HABITS.push({
     id: `${HABITS.length + 1}`,
     name,
     description,
     interval,
-    streak: 0,
+    currentStreak: 0,
+    lastCompletedDate,
   })
 }
 
@@ -88,5 +98,5 @@ export function updateStreak(id: string) {
   if (!habit) {
     throw new Error('Habit not found')
   }
-  return habit.streak + 1
+  return habit.currentStreak + 1
 }
