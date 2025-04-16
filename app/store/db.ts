@@ -1,6 +1,6 @@
 import { isYesterday, isToday, parseISO } from 'date-fns'
 
-type Habit = {
+export type Habit = {
   id: string
   name: string
   description: string
