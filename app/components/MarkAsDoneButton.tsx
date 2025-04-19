@@ -1,5 +1,5 @@
 import { Button } from '~/components/ui/button'
-import { type Habit, updateStreak } from '~/store/db'
+import { type Habit, markHabitAsDone } from '~/store/db'
 import { isToday, parseISO } from 'date-fns'
 
 type Props = {
@@ -11,8 +11,10 @@ export default function MarkAsDoneButton({ habit, onUpdate }: Props) {
   const alreadyDoneToday = isToday(parseISO(habit.lastCompletedDate))
 
   const handleClick = () => {
-    const updated = updateStreak(habit)
-    onUpdate(updated)
+    const updated = markHabitAsDone(habit.id)
+    if (updated) {
+      onUpdate(updated)
+    }
   }
 
   return (
@@ -21,7 +23,7 @@ export default function MarkAsDoneButton({ habit, onUpdate }: Props) {
       disabled={alreadyDoneToday}
       variant={alreadyDoneToday ? 'secondary' : 'default'}
     >
-      {alreadyDoneToday ? '✅' : 'Mark as Done'}
+      {alreadyDoneToday ? 'Done Today ✅' : 'Mark as Done'}
     </Button>
   )
 }

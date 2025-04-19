@@ -1,4 +1,4 @@
-import { isYesterday, isToday, parseISO } from 'date-fns'
+import { isYesterday, isToday, parseISO, subDays, formatISO } from 'date-fns'
 
 export type Habit = {
   id: string
@@ -9,30 +9,33 @@ export type Habit = {
   lastCompletedDate: string
 }
 
+const yesterday = subDays(new Date(), 1)
+const yesterdayISO = formatISO(yesterday)
+
 const HABITS: Habit[] = [
   {
     id: '1',
     name: 'Reading',
     description: 'Read 2 chapters',
     interval: 'daily',
-    currentStreak: 1,
-    lastCompletedDate: '',
+    currentStreak: 4,
+    lastCompletedDate: yesterdayISO,
   },
   {
     id: '2',
     name: 'Hydrate',
     description: 'Drink 48 oz of water',
     interval: 'daily',
-    currentStreak: 1,
-    lastCompletedDate: '',
+    currentStreak: 4,
+    lastCompletedDate: yesterdayISO,
   },
   {
     id: '3',
     name: 'Pushups',
     description: '20 pushups',
     interval: 'alternating',
-    currentStreak: 1,
-    lastCompletedDate: '',
+    currentStreak: 3,
+    lastCompletedDate: yesterdayISO,
   },
   {
     id: '4',
@@ -40,23 +43,23 @@ const HABITS: Habit[] = [
     description: 'Run 5 miles',
     interval: 'alternating',
     currentStreak: 1,
-    lastCompletedDate: '',
+    lastCompletedDate: yesterdayISO,
   },
   {
     id: '5',
     name: 'Floss',
     description: 'Floss teeth nightly',
     interval: 'daily',
-    currentStreak: 1,
-    lastCompletedDate: '',
+    currentStreak: 4,
+    lastCompletedDate: yesterdayISO,
   },
   {
     id: '6',
     name: 'Journal',
     description: 'Write down daily thoughts',
     interval: 'daily',
-    currentStreak: 1,
-    lastCompletedDate: '',
+    currentStreak: 4,
+    lastCompletedDate: yesterdayISO,
   },
 ]
 
@@ -94,25 +97,40 @@ export function getHabit(id: string) {
   return habit
 }
 
-export function updateStreak(habit: Habit): Habit {
+export function markHabitAsDone(id: string): Habit | null {
+  const habit = getHabit(id)
+  if (!habit) return null
+
   const today = new Date()
   const lastDate = parseISO(habit.lastCompletedDate)
 
-  if (isToday(lastDate)) {
-    return habit
-  }
+  if (isToday(lastDate)) return habit
 
+  let updated: Habit
   if (isYesterday(lastDate)) {
-    return {
+    updated = {
       ...habit,
       currentStreak: habit.currentStreak + 1,
       lastCompletedDate: today.toISOString(),
     }
+  } else {
+    updated = {
+      ...habit,
+      currentStreak: 1,
+      lastCompletedDate: today.toISOString(),
+    }
   }
 
-  return {
-    ...habit,
-    currentStreak: 1,
-    lastCompletedDate: today.toISOString(),
+  updateHabit(updated)
+  return updated
+}
+
+export function updateHabit(updated: Habit) {
+  const index = HABITS.findIndex((habit) => habit.id === updated.id)
+
+  if (index !== -1) {
+    HABITS[index] = updated
   }
+
+  console.log('Habit updated in HABITS[]: ', updated)
 }

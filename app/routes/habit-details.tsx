@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import type { Route } from './+types/habit-details'
-import { getHabit } from '~/store/db'
+import { type Habit, getHabit, updateHabit } from '~/store/db'
+import MarkAsDoneButton from '~/components/MarkAsDoneButton'
 
 export function loader({ params }: Route.LoaderArgs) {
   const { id } = params
@@ -16,14 +18,25 @@ export default function HabitDetails({ loaderData }: Route.ComponentProps) {
     return <p>Habit not found 😔</p>
   }
 
-  const { name, description, interval, currentStreak } = loaderData
+  const [habit, setHabit] = useState<Habit>(loaderData)
+
+  const handleUpdate = (updated: Habit) => {
+    setHabit(updated)
+    updateHabit(updated)
+  }
+
+  const { name, description, interval, currentStreak } = habit
 
   return (
-    <div className='p-4'>
-      <h1>{name}</h1>
+    <div className='p-4 space-y-4'>
+      <h1 className='text-2xl font-bold'>{name}</h1>
       <p>{description}</p>
-      <p>Interval: {interval}</p>
-      <p>Current Streak: {currentStreak}</p>
+      <p className='text-sm text-muted-foreground'>Interval: {interval}</p>
+      <p className='text-orange-500 font-medium'>
+        🔥 Current Streak: {currentStreak} day{currentStreak !== 1 ? 's' : ''}
+      </p>
+
+      <MarkAsDoneButton habit={habit} onUpdate={handleUpdate} />
     </div>
   )
 }
