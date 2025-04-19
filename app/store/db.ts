@@ -9,18 +9,22 @@ export type Habit = {
   lastCompletedDate: string
 }
 
-let HABITS: Habit[] | null = null
 const SOTRAGE_KEY = 'habits'
 
+let HABITS: Habit[] = []
+
+function isBrowser(): boolean {
+  return typeof window !== 'undefined' && typeof localStorage !== 'undefined'
+}
+
 function saveHabits(habits: Habit[]) {
-  if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-    return localStorage.setItem(SOTRAGE_KEY, JSON.stringify(habits))
+  if (isBrowser()) {
+    localStorage.setItem(SOTRAGE_KEY, JSON.stringify(habits))
   }
 }
 
 function loadHabits(): Habit[] {
-  if (typeof window === 'undefined' || typeof localStorage === 'undefined')
-    return []
+  if (!isBrowser()) return []
 
   const stored = localStorage.getItem(SOTRAGE_KEY)
   if (!stored) return []
@@ -32,79 +36,80 @@ function loadHabits(): Habit[] {
   }
 }
 
-function getCachedHabits(): Habit[] {
-  if (typeof window === 'undefined') return []
+function getSeededHabits(): Habit[] {
+  const yesterday = subDays(new Date(), 1)
+  const yesterdayISO = formatISO(yesterday)
 
-  if (!HABITS) {
-    HABITS = loadHabits()
-  }
+  return [
+    {
+      id: '1',
+      name: 'Reading',
+      description: 'Read 2 chapters',
+      interval: 'daily',
+      currentStreak: 4,
+      lastCompletedDate: yesterdayISO,
+    },
+    {
+      id: '2',
+      name: 'Hydrate',
+      description: 'Drink 48 oz of water',
+      interval: 'daily',
+      currentStreak: 4,
+      lastCompletedDate: yesterdayISO,
+    },
+    {
+      id: '3',
+      name: 'Pushups',
+      description: '20 pushups',
+      interval: 'alternating',
+      currentStreak: 3,
+      lastCompletedDate: yesterdayISO,
+    },
+    {
+      id: '4',
+      name: 'Run',
+      description: 'Run 5 miles',
+      interval: 'alternating',
+      currentStreak: 1,
+      lastCompletedDate: yesterdayISO,
+    },
+    {
+      id: '5',
+      name: 'Floss',
+      description: 'Floss teeth nightly',
+      interval: 'daily',
+      currentStreak: 4,
+      lastCompletedDate: yesterdayISO,
+    },
+    {
+      id: '6',
+      name: 'Journal',
+      description: 'Write down daily thoughts',
+      interval: 'daily',
+      currentStreak: 4,
+      lastCompletedDate: yesterdayISO,
+    },
+  ]
+}
 
-  if (HABITS.length === 0) {
-    const yesterday = subDays(new Date(), 1)
-    const yesterdayISO = formatISO(yesterday)
+export function initHabits() {
+  if (!isBrowser()) return
 
-    HABITS = [
-      {
-        id: '1',
-        name: 'Reading',
-        description: 'Read 2 chapters',
-        interval: 'daily',
-        currentStreak: 4,
-        lastCompletedDate: yesterdayISO,
-      },
-      {
-        id: '2',
-        name: 'Hydrate',
-        description: 'Drink 48 oz of water',
-        interval: 'daily',
-        currentStreak: 4,
-        lastCompletedDate: yesterdayISO,
-      },
-      {
-        id: '3',
-        name: 'Pushups',
-        description: '20 pushups',
-        interval: 'alternating',
-        currentStreak: 3,
-        lastCompletedDate: yesterdayISO,
-      },
-      {
-        id: '4',
-        name: 'Run',
-        description: 'Run 5 miles',
-        interval: 'alternating',
-        currentStreak: 1,
-        lastCompletedDate: yesterdayISO,
-      },
-      {
-        id: '5',
-        name: 'Floss',
-        description: 'Floss teeth nightly',
-        interval: 'daily',
-        currentStreak: 4,
-        lastCompletedDate: yesterdayISO,
-      },
-      {
-        id: '6',
-        name: 'Journal',
-        description: 'Write down daily thoughts',
-        interval: 'daily',
-        currentStreak: 4,
-        lastCompletedDate: yesterdayISO,
-      },
-    ]
+  const stored = loadHabits()
 
+  if (stored.length === 0) {
+    HABITS = getSeededHabits()
     saveHabits(HABITS)
+  } else {
+    HABITS = stored
   }
-  return HABITS
 }
 
 export function getHabits(): Habit[] {
-  return getCachedHabits()
+  return [...HABITS]
 }
 
 export function getHabit(id: string): Habit {
-  HABITS = loadHabits()
   const habit = HABITS.find((habit) => habit.id === id)
 
   if (!habit) {
@@ -124,8 +129,6 @@ export function addHabit({
   interval: string
   lastCompletedDate: string
 }) {
-  const habits = getCachedHabits()
-
   const newHabit: Habit = {
     id: `${Date.now()}`,
     name,
@@ -135,24 +138,21 @@ export function addHabit({
     lastCompletedDate,
   }
 
-  habits.push(newHabit)
-  saveHabits(habits)
+  HABITS.push(newHabit)
+  saveHabits(HABITS)
 }
 
 export function updateHabit(updated: Habit) {
-  const habits = getCachedHabits()
-  const index = habits.findIndex((habit) => habit.id === updated.id)
+  const index = HABITS.findIndex((habit) => habit.id === updated.id)
 
   if (index !== -1) {
-    habits[index] = updated
-    saveHabits(habits)
+    HABITS[index] = updated
+    saveHabits(HABITS)
   }
 }
 
 export function markHabitAsDone(id: string): Habit | null {
   const habit = getHabit(id)
-  if (!habit) return null
-
   const today = new Date()
   const lastDate = parseISO(habit.lastCompletedDate)
 
@@ -178,7 +178,6 @@ export function markHabitAsDone(id: string): Habit | null {
 }
 
 export function resetHabits() {
-  localStorage.removeItem(SOTRAGE_KEY)
-  HABITS = null
-  getCachedHabits
+  HABITS = getSeededHabits()
+  saveHabits(HABITS)
 }

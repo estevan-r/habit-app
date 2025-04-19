@@ -1,6 +1,6 @@
 import type { Route } from './+types/home'
 import { Link, Outlet } from 'react-router'
-import { getHabits } from '~/store/db'
+import { initHabits, getHabits } from '~/store/db'
 import ResetHabitsButton from '~/components/reset-habits-button'
 import FormModal from '~/components/form-modal'
 import {
@@ -13,7 +13,9 @@ import {
 } from '~/components/ui/card'
 
 export async function clientLoader() {
+  initHabits()
   const data = getHabits()
+
   data.sort((a, b) => {
     return (b.id as any) - (a.id as any)
   })
