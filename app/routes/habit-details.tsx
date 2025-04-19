@@ -3,14 +3,13 @@ import type { Route } from './+types/habit-details'
 import { type Habit, getHabit, updateHabit } from '~/store/db'
 import MarkAsDoneButton from '~/components/mark-as-done-button'
 
-export function loader({ params }: Route.LoaderArgs) {
-  const { id } = params
-  try {
-    const habit = getHabit(id)
-    return habit
-  } catch (error) {
-    return null
-  }
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+  const habit = getHabit(params.id)
+  return habit
+}
+
+export function HydrateFallback() {
+  return <div>Loading...</div>
 }
 
 export default function HabitDetails({ loaderData }: Route.ComponentProps) {

@@ -13,13 +13,14 @@ let HABITS: Habit[] | null = null
 const SOTRAGE_KEY = 'habits'
 
 function saveHabits(habits: Habit[]) {
-  if (typeof window === 'undefined') {
+  if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
     return localStorage.setItem(SOTRAGE_KEY, JSON.stringify(habits))
   }
 }
 
 function loadHabits(): Habit[] {
-  if (typeof window === 'undefined') return []
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined')
+    return []
 
   const stored = localStorage.getItem(SOTRAGE_KEY)
   if (!stored) return []
@@ -32,6 +33,8 @@ function loadHabits(): Habit[] {
 }
 
 function getCachedHabits(): Habit[] {
+  if (typeof window === 'undefined') return []
+
   if (!HABITS) {
     HABITS = loadHabits()
   }

@@ -12,12 +12,16 @@ import {
   CardFooter,
 } from '~/components/ui/card'
 
-export function loader() {
+export async function clientLoader() {
   const data = getHabits()
   data.sort((a, b) => {
     return (b.id as any) - (a.id as any)
   })
   return data
+}
+
+export function HydrateFallback() {
+  return <div>Loading...</div>
 }
 
 export function meta({}: Route.MetaArgs) {

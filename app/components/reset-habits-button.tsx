@@ -1,5 +1,3 @@
-'use client'
-
 import { Button } from '~/components/ui/button'
 import { resetHabits } from '~/store/db'
 import { useNavigate } from 'react-router'
