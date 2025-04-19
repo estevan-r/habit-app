@@ -1,6 +1,7 @@
 import type { Route } from './+types/home'
 import { Link, Outlet } from 'react-router'
 import { getHabits } from '~/store/db'
+import ResetHabitsButton from '~/components/reset-habits-button'
 import FormModal from '~/components/form-modal'
 import {
   Card,
@@ -49,6 +50,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           />
         </Card>
       ))}
+      <ResetHabitsButton />
     </div>
   )
 }

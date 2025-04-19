@@ -173,3 +173,9 @@ export function markHabitAsDone(id: string): Habit | null {
   updateHabit(updated)
   return updated
 }
+
+export function resetHabits() {
+  localStorage.removeItem(SOTRAGE_KEY)
+  HABITS = null
+  getCachedHabits
+}

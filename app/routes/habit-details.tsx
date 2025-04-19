@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { Route } from './+types/habit-details'
 import { type Habit, getHabit, updateHabit } from '~/store/db'
-import MarkAsDoneButton from '~/components/MarkAsDoneButton'
+import MarkAsDoneButton from '~/components/mark-as-done-button'
 
 export function loader({ params }: Route.LoaderArgs) {
   const { id } = params
