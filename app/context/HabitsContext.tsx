@@ -19,10 +19,8 @@ export function HabitsProvider({ children }: { children: React.ReactNode }) {
 
   const markDone = async (id: string) => {
     const updated = await markHabitAsDone(id)
-
-    if (!updated) {
-      return setHabits((prev) => prev.map((h) => (h.id === id ? updated : h)))
-    }
+    if (!updated) return
+    setHabits((prev) => prev.map((h) => (h.id === id ? updated : h)))
   }
 
   const reset = async () => {

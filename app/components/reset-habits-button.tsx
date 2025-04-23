@@ -1,9 +1,10 @@
 import { Button } from '~/components/ui/button'
-import { resetHabits } from '~/store/db'
+import { useHabits } from '~/context/HabitsContext'
+// import { resetHabits } from '~/store/db'
 
 export default function ResetHabitsButton() {
   const handleClick = () => {
-    resetHabits()
+    useHabits().reset()
     window.location.reload()
   }
 
