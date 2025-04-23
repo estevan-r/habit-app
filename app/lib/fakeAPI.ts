@@ -7,7 +7,7 @@ export function getHabits(): Promise<Habit[]> {
   return new Promise((res) => setTimeout(() => res([...habits]), 300))
 }
 
-export function getHabi(id: string): Promise<Habit | undefined> {
+export function getHabit(id: string): Promise<Habit | undefined> {
   return new Promise((res) =>
     setTimeout(() => res(habits.find((h) => h.id === id)), 300)
   )

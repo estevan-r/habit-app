@@ -6,8 +6,9 @@ export default function ResetHabitsButton() {
   const { reset } = useHabits()
 
   // const handleClick = () => {
-  //   useHabits().reset()
-  //   window.location.reload()
+  //   document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' })
+  //   globalThis.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  //   reset()
   // }
 
   return (
